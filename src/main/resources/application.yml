@@ -6,11 +6,10 @@ server:
    #   timeout:      #session过期时间，秒为单位
   tomcat:
     uri-encoding: utf-8  #配置tomcat编码
-  ssl: #https ssl证书配置
-    key-store:  classpath:keystore.p12
-    key-store-type: PKCS12
-    key-alias: tomcat
-    key-store-password: 123456
+  #ssl: #https ssl证书配置
+  #  key-store-type: PKCS12
+  #  key-alias: tomcat
+  #  key-store-password: 123456
 spring:
   http:
     encoding:
