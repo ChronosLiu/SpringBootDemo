@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.yang.bootdemo.mapper.UserMapper">
+    <resultMap id="userResultMap" type="cn.yang.bootdemo.model.User">
+        <id property="id" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="passWord" column="passWord"/>
+    </resultMap>
+
+    <select id="selectUserById" resultMap="userResultMap" parameterType="java.lang.Integer">
+        select id,userName,passWord from user where id = #{id}
+    </select>
+
+</mapper>

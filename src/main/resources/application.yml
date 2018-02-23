@@ -1,0 +1,73 @@
+#servlet容器配置
+server:
+  #port: 8081                  #端口
+  context-path: /bootdemo     #项目访问路径
+  #session:
+   #   timeout:      #session过期时间，秒为单位
+  tomcat:
+    uri-encoding: utf-8  #配置tomcat编码
+  ssl: #https ssl证书配置
+    key-store:  classpath:keystore.p12
+    key-store-type: PKCS12
+    key-alias: tomcat
+    key-store-password: 123456
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+  #数据源配置，采用阿里druid数据连接池
+  datasource:
+    druid:
+      #JDBC配置
+      url: jdbc:mysql://localhost:3306/bootdemo?useUnicode=true&characterEncoding=utf-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+      #连接池配置
+      initial-size: 5 #初始化大小
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000   #获取连接等待超时的时间
+      time-between-eviction-runs-millis: 60000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000 # 配置一个连接在池中最小生存的时间，单位是毫秒
+      validation-query: SELECT 1 FROM DUAL
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      filter: stat,wall,log4j #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+           #监控配置
+
+  redis: #redis缓存配置
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000  #连接超时时间，单位毫秒
+    pool:  #redis线程池配置
+      max-active: 8 #最大连接数 ，负值没有限制
+      max-idle: 8 #最大空闲连接数，默认8
+      min-idle: 0 #最小空闲连接数，默认0
+      max-wait: 3000  #最大阻塞等待时间 单位毫秒，负值没有限制
+  profiles: #不同环境下不同配置文件 dev开发模式，prod生产模式
+    active: dev
+  mvc:
+    favicon:
+      enabled: true  #开启favicon ,默认true
+
+
+#mybatis配置
+mybatis:
+  config-location:   #mybatis配置文件路径
+  mapper-locations: classpath:mapper/*.xml    #mapper文件路径
+#自定义，通过@Value获取
+user:
+  userName: aaa
+  passWord: 111
+
+logging:
+  file: D:/mylog/log.log
+  level: debug
+
+
+
+
