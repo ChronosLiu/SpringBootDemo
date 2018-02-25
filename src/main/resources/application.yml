@@ -35,7 +35,7 @@ spring:
       test-on-return: false
       test-while-idle: true
       filter: stat,wall,log4j #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-           #监控配置
+  #监控配置
 
   redis: #redis缓存配置
     database: 0
@@ -52,13 +52,19 @@ spring:
     active: dev
   mvc:
     favicon:
-      enabled: true  #开启favicon ,默认true
+      enabled: true #开启favicon ,默认true
+  jpa:
+    hibernate:
+      ddl-auto:  update
+    show-sql: true
+  jackson:
+    serialization: true
 
 
 #mybatis配置
-mybatis:
-  config-location:   #mybatis配置文件路径
-  mapper-locations: classpath:mapper/*.xml    #mapper文件路径
+#mybatis:
+ # config-location:   #mybatis配置文件路径
+  #mapper-locations: classpath:mapper/*.xml    #mapper文件路径
 #自定义，通过@Value获取
 user:
   userName: aaa
