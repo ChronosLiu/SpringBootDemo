@@ -53,13 +53,12 @@ spring:
   mvc:
     favicon:
       enabled: true #开启favicon ,默认true
-  jpa:
+  jpa:  #jpa配置
     hibernate:
       ddl-auto:  update
     show-sql: true
   jackson:
     serialization: true
-
 
 #mybatis配置
 #mybatis:

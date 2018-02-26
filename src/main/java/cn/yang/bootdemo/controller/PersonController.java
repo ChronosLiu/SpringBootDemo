@@ -123,4 +123,34 @@ public class PersonController {
         return  this.personService.savePersonWithoutRollBack(person);
     }
 
+    /**
+     * 缓存注解cacheput
+     * @param person
+     * @return
+     */
+    @RequestMapping("/put")
+    public Person cacheput(Person person){
+        return this.personService.save(person);
+    }
+
+    /**
+     * 缓存注解cacheable
+     * @param person
+     * @return
+     */
+    @RequestMapping("/able")
+    public Person cacheable(Person person){
+        return this.personService.findOne(person);
+    }
+
+    /**
+     * 缓存注解cacheEvit
+     * @param id
+     * @return
+     */
+    @RequestMapping("/evit")
+    public String cacheevit(Long id){
+        this.personService.remove(id);
+        return "OK";
+    }
 }

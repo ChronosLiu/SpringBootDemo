@@ -9,10 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @MapperScan("cn.yang.bootdemo.mapper")
+@EnableCaching //开启缓存支持
 public class BootdemoApplication {
 
 	public static void main(String[] args) {
