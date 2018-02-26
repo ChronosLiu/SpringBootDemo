@@ -2,6 +2,7 @@ package cn.yang.bootdemo.controller;
 
 import cn.yang.bootdemo.dao.PersonRepository;
 import cn.yang.bootdemo.domain.Person;
+import cn.yang.bootdemo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +24,8 @@ public class PersonController {
 
     @Autowired
     PersonRepository personRepository;
-
+    @Autowired
+    PersonService personService;
     /**
      * 保存 save 支持批量保存
      * @param name
@@ -101,5 +103,24 @@ public class PersonController {
         return people;
     }
 
+    /**
+     * 测试事务回滚
+     * @param person
+     * @return
+     */
+    @RequestMapping("/rollback")
+    public Person rollback(Person person){
+        return this.personService.savePersonWithRollBack(person);
+    }
+
+    /**
+     * 测试事务不回滚
+     * @param person
+     * @return
+     */
+    @RequestMapping("/norollback")
+    public Person noRollback(Person person){
+        return  this.personService.savePersonWithoutRollBack(person);
+    }
 
 }
