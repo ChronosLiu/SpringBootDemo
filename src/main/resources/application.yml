@@ -59,6 +59,10 @@ spring:
     show-sql: true
   jackson:
     serialization: true
+  thymeleaf:
+    cache: false  #thymeleaf缓存配置，默认true使用缓存，false不使用缓存，模板热部署
+  freemarker:
+    cache: false # Freemarker模板热部署
 
 #mybatis配置
 #mybatis:
